@@ -1,0 +1,55 @@
+﻿<Window x:Name="Main" x:Class="Gw2AddonsUpdaterLauncher.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Gw2AddonsUpdaterLauncher"
+        mc:Ignorable="d"
+        Title="Gw2AddonsUpdaterLauncher" Height="450" SizeToContent="WidthAndHeight" WindowStartupLocation="CenterScreen" Width="600">
+    <Grid>
+        <GroupBox x:Name="Gw2" Header="Gw2" Margin="0,49,0,260">
+            <StackPanel x:Name="gw2_panel">
+                <WrapPanel>
+                    <TextBox x:Name="gw2_path_text" HorizontalAlignment="Left" Initialized="gw2_path_text_Initialized" VerticalAlignment="Top" Width="480"/>
+                    <Button x:Name="gw2_select_path_btn" Margin="5,0" Padding="5,0" Content="Select Gw2 Path" HorizontalAlignment="Right" VerticalAlignment="Top" Click="gw2_select_path_btn_Click"/>
+                </WrapPanel>
+                <TabControl Visibility="Hidden" />
+                <WrapPanel>
+                    <CheckBox x:Name="gw2_opt_windowed" Content="Windowed Full Screen" Width="153" HorizontalAlignment="Left" IsChecked="True"/>
+                    <CheckBox x:Name="gw_opt_autologin" Content="Autologin" Width="80" HorizontalAlignment="Left" IsChecked="True"/>
+                    <CheckBox x:Name="gw_opt_loadingscreenstats" Content="Loading Screen Stats" IsChecked="True" Width="135" HorizontalAlignment="Left"/>
+                </WrapPanel>
+            </StackPanel>
+        </GroupBox>
+        <GroupBox x:Name="TacO" Header="TacO" Margin="0,179,0,145">
+            <StackPanel x:Name="taco_panel">
+                <WrapPanel>
+                    <TextBox x:Name="taco_path_text" HorizontalAlignment="Left" Initialized="taco_path_text_Initialized" VerticalAlignment="Top" Width="480"/>
+                    <Button x:Name="taco_select_path_btn" Margin="5,0" Padding="5,0" Content="Select Taco Path" HorizontalAlignment="Right" VerticalAlignment="Top" Click="taco_select_path_btn_Click"/>
+                </WrapPanel>
+                <TabControl Visibility="Hidden" />
+                <WrapPanel>
+                    <CheckBox x:Name="taco_update" Content="Update Taco and Checked POI" IsChecked="True" Width="337" HorizontalAlignment="Left"/>
+                    <CheckBox x:Name="taco_tekkits_poi" Content="Tekkit's Workshop POI" IsChecked="True" Width="150" HorizontalAlignment="Left" VerticalAlignment="Stretch"/>
+                    <CheckBox x:Name="taco_reactif_poi" Content="REACTIF Pack" IsChecked="True" Width="93" HorizontalAlignment="Left"/>
+                </WrapPanel>
+            </StackPanel>
+        </GroupBox>
+        <GroupBox x:Name="Arcdps" Header="ArcDps" Margin="0,294,0,45">
+            <StackPanel x:Name="arcdps_panel">
+                <WrapPanel>
+                    <TextBox x:Name="arcdps_path_text" HorizontalAlignment="Left" Initialized="arcdps_path_text_Initialized" VerticalAlignment="Top" Width="465"/>
+                    <Button x:Name="arcdps_select_path_btn" Margin="5,0" Padding="5,0" Content="Select Arcdps Path" HorizontalAlignment="Right" VerticalAlignment="Top" Click="arcdps_select_path_btn_Click"/>
+                </WrapPanel>
+                <TabControl Visibility="Hidden" />
+                <WrapPanel>
+                    <CheckBox x:Name="arcdps_update" Content="Auto Update ArcDPS and Checked addons" IsChecked="True" Width="334" HorizontalAlignment="Left"/>
+                    <CheckBox x:Name="arcdps_template" Content="Templates Addon" IsChecked="True" Width="126" HorizontalAlignment="Center"/>
+                    <CheckBox x:Name="arcdps_machanics" Content="Mechanics Addon" IsChecked="True" Width="115" HorizontalAlignment="Left"/>
+                </WrapPanel>
+            </StackPanel>
+        </GroupBox>
+        <Button x:Name="update_button" Content="Do the Magic and Launch Game" HorizontalAlignment="Left" Margin="10,394,0,0" VerticalAlignment="Top" Width="183"/>
+        <CheckBox x:Name="auto_updater_cbx" Content="Auto Update And Launch Game Automaticaly !" HorizontalAlignment="Left" Margin="208,396,0,0" VerticalAlignment="Top" Width="275"/>
+    </Grid>
+</Window>
