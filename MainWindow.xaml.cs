@@ -23,12 +23,12 @@ namespace Gw2AddonsUpdaterLauncher
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
-    {
-        public static string Gw2Path = "C:\\Program Files\\Guild Wars 2\\";
-        public static string Gw2AddonPath = Gw2Path + "addons\\";
-        public static string TacoPath = Gw2AddonPath + "taco\\";
-        public static string ArcdpsPath = Gw2AddonPath + "arcdps\\";
+    public partial class MainWindow : Window {
+
+        public static string Gw2Path = Properties.Resources.Gw2Path;
+        public static string Gw2AddonPath = Gw2Path + Properties.Resources.Gw2AddonPath;
+        public static string TacoPath = Gw2AddonPath + Properties.Resources.TacoPath;
+        public static string ArcdpsPath = Gw2Path + Properties.Resources.ArcdpsPath;
 
         public MainWindow()
         {
@@ -58,14 +58,20 @@ namespace Gw2AddonsUpdaterLauncher
             {
                 // Open document
                 gw2_path_text.Text = Path.GetDirectoryName(gw2PathDialog.FileName);
+                ArcdpsPath = Path.GetDirectoryName(gw2PathDialog.FileName) + "\\" + Properties.Resources.ArcdpsPath;
             }
         }
 
         private void gw2_path_text_Initialized(object sender, EventArgs e)
         {
+            string UserGw2Path = Properties.User.Default.Gw2Path;
+            if (UserGw2Path != "")
+            {
+                Gw2Path = UserGw2Path;
+            }
             if ( Directory.Exists(Gw2Path) == true)
             {
-                gw2_path_text.Text = Gw2Path;
+                gw2_path_text.Text = Path.GetDirectoryName(Gw2Path);
             }
             else
             {
@@ -101,13 +107,18 @@ namespace Gw2AddonsUpdaterLauncher
 
         private void taco_path_text_Initialized(object sender, EventArgs e)
         {
+            string UserTacoPath = Properties.User.Default.TacoPath;
+            if (UserTacoPath != "")
+            {
+                TacoPath = UserTacoPath;
+            }
             if (Directory.Exists(TacoPath) == true)
             {
-                taco_path_text.Text = TacoPath;
+                taco_path_text.Text = Path.GetDirectoryName(TacoPath);
             }
             else if(Directory.Exists(Gw2AddonPath) == true)
             {
-                taco_path_text.Text = TacoPath;
+                taco_path_text.Text = Path.GetDirectoryName(TacoPath);
             }
             else
             {
@@ -115,47 +126,29 @@ namespace Gw2AddonsUpdaterLauncher
             }
 
         }
-        private void arcdps_select_path_btn_Click(object sender, RoutedEventArgs e)
-        {
-            // Configure open file dialog box
-            OpenFileDialog arcdpsPathDialog = new OpenFileDialog
-            {
-                Multiselect = false,
-                Filter = "Exe File|*.exe",
-                DefaultExt = ".exe",
-                InitialDirectory = "c:\\",
-                RestoreDirectory = true,
-                Title = "Select Arcdps Path",
-                CheckFileExists = true,
-                CheckPathExists = true
-            };
-            // Show open file dialog box
-            Nullable<bool> result = arcdpsPathDialog.ShowDialog();
 
-            // Process open file dialog box results
-            if (result == true)
+        private void update_button_Click(object sender, RoutedEventArgs e)
+        {
+            //Get GW2 Options
+
+            //Get Taco Options
+            if (taco_update.IsChecked == true)
             {
-                // Open document
-                arcdps_path_text.Text = Path.GetDirectoryName(arcdpsPathDialog.FileName);
+
+            }
+            //Get Arcdps Options
+            if (arcdps_update.IsChecked == true)
+            {
+                if(arcdps_template.IsChecked == true)
+                {
+                    App.Download_File(Properties.Resources.ArcdpsURi, ArcdpsPath);
+                }
+                if (arcdps_mechanics.IsChecked == true)
+                {
+                    App.Download_File(Properties.Resources.ArcdpsMechanicsURi, ArcdpsPath);
+                }
+
             }
         }
-
-        private void arcdps_path_text_Initialized(object sender, EventArgs e)
-        {
-            if (Directory.Exists(ArcdpsPath) == true)
-            {
-                arcdps_path_text.Text = ArcdpsPath;
-            }
-            else if (Directory.Exists(Gw2AddonPath) == true)
-            {
-                arcdps_path_text.Text = ArcdpsPath;
-            }
-            else
-            {
-                arcdps_path_text.Text = "Choose ArcDPS executable path";
-            }
-
-        }
-
     }
 }

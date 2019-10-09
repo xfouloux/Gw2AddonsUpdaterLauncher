@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Net;
 
 namespace Gw2AddonsUpdaterLauncher
 {
@@ -16,6 +17,11 @@ namespace Gw2AddonsUpdaterLauncher
 
     public partial class App : Application
     {
+        static readonly WebClient wc = new WebClient();
+        internal static void Download_File(string uri, string save_path)
+        {
+            wc.DownloadFileAsync(new System.Uri(uri), save_path);
+        }
     }
-
+    
 }

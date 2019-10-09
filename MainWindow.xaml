@@ -7,10 +7,14 @@
         mc:Ignorable="d"
         Title="Gw2AddonsUpdaterLauncher" Height="450" SizeToContent="WidthAndHeight" WindowStartupLocation="CenterScreen" Width="600">
     <Grid>
-        <GroupBox x:Name="Gw2" Header="Gw2" Margin="0,49,0,260">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="15*"/>
+            <RowDefinition Height="47*"/>
+        </Grid.RowDefinitions>
+        <GroupBox x:Name="Gw2" Header="Gw2" Margin="0,49,0,260" Grid.RowSpan="2">
             <StackPanel x:Name="gw2_panel">
                 <WrapPanel>
-                    <TextBox x:Name="gw2_path_text" HorizontalAlignment="Left" Initialized="gw2_path_text_Initialized" VerticalAlignment="Top" Width="480"/>
+                    <TextBox x:Name="gw2_path_text" HorizontalAlignment="Left" Initialized="gw2_path_text_Initialized" VerticalAlignment="Top" Width="480" />
                     <Button x:Name="gw2_select_path_btn" Margin="5,0" Padding="5,0" Content="Select Gw2 Path" HorizontalAlignment="Right" VerticalAlignment="Top" Click="gw2_select_path_btn_Click"/>
                 </WrapPanel>
                 <TabControl Visibility="Hidden" />
@@ -21,7 +25,7 @@
                 </WrapPanel>
             </StackPanel>
         </GroupBox>
-        <GroupBox x:Name="TacO" Header="TacO" Margin="0,179,0,145">
+        <GroupBox x:Name="TacO" Header="TacO" Margin="0,74,0,145" Grid.Row="1">
             <StackPanel x:Name="taco_panel">
                 <WrapPanel>
                     <TextBox x:Name="taco_path_text" HorizontalAlignment="Left" Initialized="taco_path_text_Initialized" VerticalAlignment="Top" Width="480"/>
@@ -35,21 +39,16 @@
                 </WrapPanel>
             </StackPanel>
         </GroupBox>
-        <GroupBox x:Name="Arcdps" Header="ArcDps" Margin="0,294,0,45">
+        <GroupBox x:Name="Arcdps" Header="ArcDps" Margin="0,189,0,45" Grid.Row="1">
             <StackPanel x:Name="arcdps_panel">
-                <WrapPanel>
-                    <TextBox x:Name="arcdps_path_text" HorizontalAlignment="Left" Initialized="arcdps_path_text_Initialized" VerticalAlignment="Top" Width="465"/>
-                    <Button x:Name="arcdps_select_path_btn" Margin="5,0" Padding="5,0" Content="Select Arcdps Path" HorizontalAlignment="Right" VerticalAlignment="Top" Click="arcdps_select_path_btn_Click"/>
-                </WrapPanel>
-                <TabControl Visibility="Hidden" />
                 <WrapPanel>
                     <CheckBox x:Name="arcdps_update" Content="Auto Update ArcDPS and Checked addons" IsChecked="True" Width="334" HorizontalAlignment="Left"/>
                     <CheckBox x:Name="arcdps_template" Content="Templates Addon" IsChecked="True" Width="126" HorizontalAlignment="Center"/>
-                    <CheckBox x:Name="arcdps_machanics" Content="Mechanics Addon" IsChecked="True" Width="115" HorizontalAlignment="Left"/>
+                    <CheckBox x:Name="arcdps_mechanics" Content="Mechanics Addon" IsChecked="True" Width="115" HorizontalAlignment="Left"/>
                 </WrapPanel>
             </StackPanel>
         </GroupBox>
-        <Button x:Name="update_button" Content="Do the Magic and Launch Game" HorizontalAlignment="Left" Margin="10,394,0,0" VerticalAlignment="Top" Width="183"/>
-        <CheckBox x:Name="auto_updater_cbx" Content="Auto Update And Launch Game Automaticaly !" HorizontalAlignment="Left" Margin="208,396,0,0" VerticalAlignment="Top" Width="275"/>
+        <Button x:Name="update_button" Content="Do the Magic and Launch Game" HorizontalAlignment="Left" Margin="10,289,0,0" VerticalAlignment="Top" Width="183" Grid.Row="1" Click="update_button_Click"/>
+        <CheckBox x:Name="auto_updater_cbx" Content="Auto Update And Launch Game Automaticaly !" HorizontalAlignment="Left" Margin="208,291,0,0" VerticalAlignment="Top" Width="275" Grid.Row="1"/>
     </Grid>
 </Window>
